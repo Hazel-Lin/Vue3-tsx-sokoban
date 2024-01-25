@@ -1,40 +1,23 @@
 <script setup lang="ts">
-import { type Component, reactive } from 'vue'
-import { type Element, type Map, setupMap } from '../game'
-import Wall from './Wall.vue'
-import Floor from './Floor.vue'
-import Empty from './Empty.vue'
-
-const map = reactive({} as Map)
-setupMap(map)
-
-const mapElement: Record<string, Component> = {
-  Wall,
-  Floor,
-  Empty,
-}
-
-function getElementComponent(element: Element) {
-  return mapElement[element.name]
-}
+const map
+= [[1, 1, 1, 1, 1],
+  [1, 2, 2, 2, 1],
+  [1, 2, 2, 2, 1],
+  [1, 2, 2, 2, 1],
+  [1, 1, 1, 1, 1],
+]
 </script>
 
 <template>
-  <div class="map">
-    <div v-for="row in map.data" :key="row" class="row">
-      <div v-for="j in row" :key="j" class="col">
-        <component :is="getElementComponent(j)" />
+  <div>
+    <div v-for="(row, i) in map" :key="i" class="flex">
+      <div v-for="(col, j) in map[i]" :key="j">
+        <img v-if="map[i][j] === 2" src="../assets/floor.png" alt="">
+        <img v-else src="../assets/wall.png" alt="">
+        <!-- <div v-if="map[i][j] === 2">
+        {{ i }} ,{{ j }}
+        </div> -->
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.row {
-  display: flex;
-}
-
-.col img {
-  display: block;
-}
-</style>

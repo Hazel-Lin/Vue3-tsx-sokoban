@@ -1,27 +1,11 @@
 <script setup lang="ts">
-const game = ref(createGame({ level: 1 }))
-setupGame(game.value)
-
-onMounted(() => {
-  startGame()
-})
-
-function handleNextCheckpoint() {
-  startNextLevel()
-}
+import Map from '~/components/Map.vue'
 </script>
 
 <template>
-  <div class="relative">
+  <div style="position: relative;">
     <Map />
-    <PlacePoints />
     <Player />
-    <Cargos />
-    <div v-show="game.isWin">
-      <button class="bg-red-500" @click="handleNextCheckpoint">
-        下一关
-      </button>
-    </div>
   </div>
 </template>
 
