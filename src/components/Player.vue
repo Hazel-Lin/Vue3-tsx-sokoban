@@ -1,20 +1,21 @@
 <script setup lang='ts'>
 import { move, player } from '~/game/player'
+import { cargosPosition } from '~/game/cargos'
 
 // 键盘事件
 function keydown(e: KeyboardEvent) {
   switch (e.code) {
     case 'ArrowUp':
-      move(player.value, 'up')
+      move(player.value, cargosPosition.value, 'up')
       break
     case 'ArrowDown':
-      move(player.value, 'down')
+      move(player.value, cargosPosition.value, 'down')
       break
     case 'ArrowLeft':
-      move(player.value, 'left')
+      move(player.value, cargosPosition.value, 'left')
       break
     case 'ArrowRight':
-      move(player.value, 'right')
+      move(player.value, cargosPosition.value, 'right')
       break
   }
 }
