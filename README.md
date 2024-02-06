@@ -1,8 +1,8 @@
-# vue3-tsx-sokoban
+# Vue3-tsx-sokoban
 
 ## 项目介绍
 
-基于vue3+tsx的推箱子游戏，目的是熟悉vue3+tsx+TDD的开发方式。
+基于 Vue3 + tsx 的推箱子游戏，目的是熟悉 Vue3 + tsx + TDD 的开发方式。
 
 ## 功能介绍
 - [x] 玩家渲染
