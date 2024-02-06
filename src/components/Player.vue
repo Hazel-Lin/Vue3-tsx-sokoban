@@ -1,44 +1,27 @@
 <script setup lang='ts'>
-const position = ref([1, 1])
-// 可以移动的范围坐标
-const limitP = [[1, 1], [1, 2], [1, 3], [2, 1], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3]]
-
-// 移动的位置限制
-function limit(val: number, max: number, min: number) {
-  if (val < min)
-    return min
-  else if (val > max)
-    return max
-  else
-    return val
-}
-// 移动
-function move(x: number, y: number) {
-  position.value[0] += x
-  position.value[1] += y
-  const Xmax = limitP.map(item => item[0]).sort((a, b) => b - a)[0]
-  const Ymax = limitP.map(item => item[1]).sort((a, b) => b - a)[0]
-  const Xmin = limitP.map(item => item[0]).sort((a, b) => a - b)[0]
-  const Ymin = limitP.map(item => item[1]).sort((a, b) => a - b)[0]
-  position.value[0] = limit(position.value[0], Xmax, Xmin)
-  position.value[1] = limit(position.value[1], Ymax, Ymin)
-}
+import { move, player } from '~/game/player'
 
 // 键盘事件
 function keydown(e: KeyboardEvent) {
   switch (e.code) {
     case 'ArrowUp':
-      move(0, -1)
+      move(player.value, 'up')
       break
     case 'ArrowDown':
-      move(0, 1)
+      move(player.value, 'down')
       break
     case 'ArrowLeft':
-      move(-1, 0)
+      move(player.value, 'left')
       break
     case 'ArrowRight':
-      move(1, 0)
+      move(player.value, 'right')
       break
+  }
+}
+function createPlayerStyle() {
+  return {
+    left: `${player.value.x * 32}px`,
+    top: `${player.value.y * 32}px`,
   }
 }
 // 监听键盘事件
@@ -52,7 +35,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="absolute" :style="{ left: `${position[0] * 32}px`, top: `${position[1] * 32}px` }">
+  <div class="absolute" :style="createPlayerStyle()">
     <img src="../assets/keeper.png" alt="">
   </div>
 </template>

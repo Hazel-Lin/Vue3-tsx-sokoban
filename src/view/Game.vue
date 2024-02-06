@@ -6,6 +6,7 @@ import Map from '~/components/Map.vue'
   <div style="position: relative;">
     <Map />
     <Player />
+    <!-- <Cargos /> -->
   </div>
 </template>
 
