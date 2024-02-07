@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { cargosPosition } from '~/game/cargos'
+import { cargosPosition } from '~/game/map'
 
 function createCargosStyle() {
   return {
