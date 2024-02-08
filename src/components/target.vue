@@ -3,17 +3,11 @@ import { getTarget, setupTarget } from '~/game/target'
 
 setupTarget({ x: 1, y: 3 })
 const t = getTarget()
-
-function createTargetStyle() {
-  return {
-    left: `${t.x * 32}px`,
-    top: `${t.y * 32}px`,
-  }
-}
+const { posStyle } = usePosition(t)
 </script>
 
 <template>
-  <div class="absolute" :style="createTargetStyle()">
+  <div class="absolute" :style="posStyle">
     <img src="../assets/target.png" alt="">
   </div>
 </template>

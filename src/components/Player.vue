@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import keeperImg from '../assets/keeper.png'
 import { move } from '~/game/move'
 import { createPlayer, getPlayer, setupPlayer } from '~/game/player'
 
@@ -22,12 +23,8 @@ function keydown(e: KeyboardEvent) {
       break
   }
 }
-function createPlayerStyle() {
-  return {
-    left: `${player.value.x * 32}px`,
-    top: `${player.value.y * 32}px`,
-  }
-}
+const { posStyle } = usePosition(player.value)
+
 // 监听键盘事件
 onMounted(() => {
   window.addEventListener('keydown', keydown)
@@ -39,7 +36,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="absolute" :style="createPlayerStyle()">
-    <img src="../assets/keeper.png" alt="">
+  <div class="absolute" :style="posStyle">
+    <img :src="keeperImg" alt="">
   </div>
 </template>

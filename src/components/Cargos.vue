@@ -4,16 +4,11 @@ import cargoImg from '../assets/cargo.png'
 import { cargosPosition } from '~/game/cargo'
 import { isWin } from '~/game/index'
 
-function createCargosStyle() {
-  return {
-    left: `${cargosPosition.value.x * 32}px`,
-    top: `${cargosPosition.value.y * 32}px`,
-  }
-}
+const { posStyle } = usePosition(cargosPosition.value)
 </script>
 
 <template>
-  <div class="absolute" :style="createCargosStyle()">
+  <div class="absolute" :style="posStyle">
     <img :src="isWin ? cargoTargetImg : cargoImg" alt="">
   </div>
 </template>
