@@ -13,9 +13,7 @@
     "postinstall": "npx simple-git-hooks"
   },
   "dependencies": {
-    "@arco-design/web-vue": "^2.54.4",
     "@vueuse/core": "^10.7.2",
-    "naive-ui": "^2.37.3",
     "vue": "^3.4.16",
     "vue-router": "^4.2.5"
   },
