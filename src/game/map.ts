@@ -19,3 +19,11 @@ export function setMap(newMap: MapType) {
 export function getMap() {
   return map
 }
+export enum MapBlock {
+  WALL = 1,
+  ROAD = 2,
+}
+
+export function isWall(data: number) {
+  return data === MapBlock.WALL
+}
