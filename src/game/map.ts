@@ -1,16 +1,21 @@
-import { ref } from 'vue'
-
-export const map = [
-  [1, 1, 1, 1, 1, 1, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 1, 1, 1, 1, 1, 1],
-]
-export const cargosPosition = ref({
-  x: 2,
-  y: 2,
-})
+type MapType = number[][]
+let map: MapType
+function createInitMap(): MapType {
+  return [
+    [1, 1, 1, 1, 1, 1, 1],
+    [1, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 1, 1, 1, 1],
+  ]
+}
+createInitMap()
+export function setMap(newMap: MapType) {
+  map = newMap
+}
+export function getMap() {
+  return map
+}
