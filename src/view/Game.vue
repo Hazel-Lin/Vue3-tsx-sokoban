@@ -5,10 +5,7 @@
   <div style="position: relative;">
     <Map />
     <Player />
+    <Target />
     <Cargos />
   </div>
 </template>
-
-<style lang="less" scoped>
-
-</style>
