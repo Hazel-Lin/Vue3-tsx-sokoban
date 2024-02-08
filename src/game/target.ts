@@ -1,15 +1,6 @@
-interface Position {
-  x: number
-  y: number
-}
+import type { Position } from '~/types'
 
 let _target: Position
-// function createInitPosition(x: number, y: number): Position {
-//   return {
-//     x,
-//     y,
-//   }
-// }
 
 export function setupTarget(target: Position) {
   _target = target

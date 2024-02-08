@@ -1,5 +1,6 @@
 import { getMap } from './map'
 import { getPlayer } from './player'
+import type { Position } from '~/types'
 import { cargosPosition } from '~/game/cargo'
 
 export enum Direction {
@@ -8,10 +9,7 @@ export enum Direction {
   UP = 'up',
   DOWN = 'down',
 }
-interface Position {
-  x: number
-  y: number
-}
+
 export function canMovePlayer(playerPosition: Position) {
   const map = getMap()
   const x = playerPosition.x
