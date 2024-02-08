@@ -1,4 +1,4 @@
-import { getMap } from './map'
+import { getMap, isWall } from './map'
 import { getPlayer } from './player'
 import type { Position } from '~/types'
 import { cargosPosition } from '~/game/cargo'
@@ -14,7 +14,7 @@ export function canMovePlayer(playerPosition: Position) {
   const map = getMap()
   const x = playerPosition.x
   const y = playerPosition.y
-  if (map[y][x] === 2)
+  if (!isWall(map[y][x]))
     return true
 
   return false
