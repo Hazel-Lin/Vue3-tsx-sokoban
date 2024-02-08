@@ -1,6 +1,9 @@
 <script setup lang='ts'>
-import { player } from '~/game/player'
 import { move } from '~/game/move'
+import { createPlayer, getPlayer, setupPlayer } from '~/game/player'
+
+setupPlayer(createPlayer({ x: 3, y: 3 }))
+const player = ref(getPlayer())
 
 // 键盘事件
 function keydown(e: KeyboardEvent) {

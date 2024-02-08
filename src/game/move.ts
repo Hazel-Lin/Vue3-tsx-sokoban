@@ -1,5 +1,6 @@
-import { cargosPosition, map } from './map'
+import { getMap } from './map'
 import { getPlayer } from './player'
+import { cargosPosition } from '~/game/cargo'
 
 export enum Direction {
   LEFT = 'left',
@@ -12,6 +13,7 @@ interface Position {
   y: number
 }
 export function canMovePlayer(playerPosition: Position) {
+  const map = getMap()
   const x = playerPosition.x
   const y = playerPosition.y
   if (map[y][x] === 2)
@@ -42,25 +44,25 @@ function canMove(player: Position, cargos: Position, direction: string) {
   }[direction]
 }
 export function move(direction: string) {
-  const playerPosition = getPlayer()
+  const playerPosition = ref(getPlayer())
   if (direction === Direction.LEFT) {
-    if (!canMovePlayer(calcPositionLeft(playerPosition)))
+    if (!canMovePlayer(calcPositionLeft(playerPosition.value)))
       return
-    if (canMove(playerPosition, cargosPosition.value, direction)) {
+    if (canMove(playerPosition.value, cargosPosition.value, direction)) {
       if (!canMovePlayer(calcPositionLeft(cargosPosition.value)))
         return
       cargosPosition.value.x -= 1
     }
-    playerPosition.x -= 1
+    playerPosition.value.x -= 1
   }
   if (direction === Direction.UP) {
-    if (!canMovePlayer(calcPositionUp(playerPosition)))
+    if (!canMovePlayer(calcPositionUp(playerPosition.value)))
       return
-    if (canMove(playerPosition, cargosPosition.value, direction)) {
+    if (canMove(playerPosition.value, cargosPosition.value, direction)) {
       if (!canMovePlayer(calcPositionUp(cargosPosition.value)))
         return
       cargosPosition.value.y -= 1
     }
-    playerPosition.y -= 1
+    playerPosition.value.y -= 1
   }
 }
