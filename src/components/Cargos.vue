@@ -12,6 +12,10 @@ function CargoComp() {
     </div>
   )
 }
+watch(() => isWin.value, (v) => {
+  const { startConfetti } = useConfetti()
+  v && startConfetti()
+})
 </script>
 
 <template>
