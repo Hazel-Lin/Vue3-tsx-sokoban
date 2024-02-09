@@ -1,8 +1,5 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div style="position: relative;">
+  <div class="relative">
     <Map />
     <Player />
     <Target />

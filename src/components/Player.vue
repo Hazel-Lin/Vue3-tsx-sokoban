@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang='tsx'>
 import keeperImg from '../assets/keeper.png'
 import { move } from '~/game/move'
 import { createPlayer, getPlayer, setupPlayer } from '~/game/player'
@@ -33,10 +33,15 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', keydown)
 })
+function KeeperComp() {
+  return (
+    <div className="absolute" style={posStyle.value}>
+      <img src={keeperImg} alt="" />
+    </div>
+  )
+}
 </script>
 
 <template>
-  <div class="absolute" :style="posStyle">
-    <img :src="keeperImg" alt="">
-  </div>
+  <KeeperComp />
 </template>

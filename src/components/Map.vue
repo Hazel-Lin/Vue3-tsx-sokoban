@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="tsx">
 import wallImg from '../assets/wall.png'
 import floorImg from '../assets/floor.png'
 import { getMap, isWall, setMap } from '~/game/map'
@@ -15,14 +15,23 @@ const newMap = [
 ]
 setMap(newMap)
 const map = getMap()
+function MapComp() {
+  return (
+    <div>
+      {map.map((row, i) => (
+        <div key={i} className="flex">
+          {row.map((cell, j) => (
+            <div key={`${i}-${j}`}>
+              <img src={isWall(cell) ? wallImg : floorImg} alt="" />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
+}
 </script>
 
 <template>
-  <div>
-    <div v-for="(_, i) in map" :key="i" class="flex">
-      <div v-for="(__, j) in map[i]" :key="j">
-        <img :src="isWall(map[i][j]) ? wallImg : floorImg" alt="">
-      </div>
-    </div>
-  </div>
+  <MapComp />
 </template>

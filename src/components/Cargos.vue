@@ -1,14 +1,19 @@
-<script setup lang='ts'>
+<script setup lang='tsx'>
 import cargoTargetImg from '../assets/cargo_on_target.png'
 import cargoImg from '../assets/cargo.png'
 import { cargosPosition } from '~/game/cargo'
 import { isWin } from '~/game/index'
 
 const { posStyle } = usePosition(cargosPosition.value)
+function CargoComp() {
+  return (
+    <div className="absolute" style={posStyle.value}>
+      <img src={isWin.value ? cargoTargetImg : cargoImg} alt="" />
+    </div>
+  )
+}
 </script>
 
 <template>
-  <div class="absolute" :style="posStyle">
-    <img :src="isWin ? cargoTargetImg : cargoImg" alt="">
-  </div>
+  <CargoComp />
 </template>
