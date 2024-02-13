@@ -31,6 +31,18 @@ export function calcPositionUp(positionObj: Position) {
     y: positionObj.y - 1,
   }
 }
+export function calcPositionRight(positionObj: Position) {
+  return {
+    x: positionObj.x + 1,
+    y: positionObj.y,
+  }
+}
+export function calcPositionDown(positionObj: Position) {
+  return {
+    x: positionObj.x,
+    y: positionObj.y + 1,
+  }
+}
 // 玩家推箱子
 // 只有当玩家和箱子相邻时，玩家才能推动箱子
 function canMove(player: Position, cargos: Position, direction: string) {
@@ -62,5 +74,25 @@ export function move(direction: string) {
       cargosPosition.value.y -= 1
     }
     playerPosition.value.y -= 1
+  }
+  if (direction === Direction.RIGHT) {
+    if (!canMovePlayer(calcPositionRight(playerPosition.value)))
+      return
+    if (canMove(playerPosition.value, cargosPosition.value, direction)) {
+      if (!canMovePlayer(calcPositionRight(cargosPosition.value)))
+        return
+      cargosPosition.value.x += 1
+    }
+    playerPosition.value.x += 1
+  }
+  if (direction === Direction.DOWN) {
+    if (!canMovePlayer(calcPositionDown(playerPosition.value)))
+      return
+    if (canMove(playerPosition.value, cargosPosition.value, direction)) {
+      if (!canMovePlayer(calcPositionDown(cargosPosition.value)))
+        return
+      cargosPosition.value.y += 1
+    }
+    playerPosition.value.y += 1
   }
 }
